@@ -37,7 +37,33 @@ namespace _3layer_university
             Form1_Load(null, null);
         }
 
-       
+        private void edit_Click(object sender, EventArgs e)
+        { 
+            string v = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+            student st = new student();
+            st.shid = Int32.Parse(v);
+            DataTable dt = st.selectone();
+            frmadd fa = new frmadd();
+            fa.txtname.Text = dt.Rows[0]["name"].ToString();
+            fa.txtfamily.Text = dt.Rows[0]["family"].ToString();
+            fa.txtshid.Text = dt.Rows[0]["shid"].ToString();
+            fa.txtaddress.Text = dt.Rows[0]["address"].ToString();
+            fa.txttell.Text = dt.Rows[0]["tell"].ToString();
+            fa.txtgender.Text = dt.Rows[0]["gender"].ToString();
+            fa.txtfieldcode.Text = dt.Rows[0]["fieldcode"].ToString();
+            fa.ShowDialog();
+            
+
+        }
+
+        private void del_Click(object sender, EventArgs e)
+        {
+            string v = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+            student st = new student();
+            st.shid = Int32.Parse(v);
+            st.delete();
+            Form1_Load(null, null);
+        }
 
         private void exit_Click(object sender, EventArgs e)
         {

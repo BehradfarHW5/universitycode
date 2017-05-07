@@ -46,7 +46,22 @@ namespace BL
        }
    
 
-    
+       public void delete()
+       {
+           base.connect();
+           string sql = "delete from student where shid={0}";
+           sql = string.Format(sql,shid);
+           base.docommand(sql);
+           base.disconnect();
+       }
+       public void update()
+       {
+           base.connect();
+           string sql = "update student set name='{0}',family='{1}',shid={2},address='{3}',tell='{4}',gender='{5}',fieldcode={6}";
+           sql = string.Format(sql, name, family, shid, address, tell, gender, fieldcode);
+           base.docommand(sql);
+           base.disconnect();
+       }
        public DataTable select()
        {
            base.connect();
